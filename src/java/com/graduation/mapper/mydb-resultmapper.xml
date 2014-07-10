@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graduation.model.MydbElement">
+
+    <update id="dropTable" parameterType="java.util.Map">
+		drop table if exists ${tableName}
+	</update>
+
+    <update id="createTable" parameterType="java.util.Map">
+		${createTableSql}
+	</update>
+
+    <insert id="insertBach" parameterType="java.util.Map">
+        insert into ${tableName}
+        values
+        <foreach item="item" index="index" collection="sqls" separator=",">
+            ${item}
+        </foreach>
+    </insert>
+
+    <insert id="insertMydb" parameterType="MydbElement">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            select max(id)+1 from mydb_user
+        </selectKey>
+        insert into mydb_user(id,tableName,rowNum,u_id)
+        values(#{id},#{tableName},#{rowNum},#{uid})
+    </insert>
+
+    <select id="getTableNames" resultType="string" parameterType="java.util.Map">
+        select tableName from mydb_user
+        where 1=1
+        <choose>
+            <when test="uid != null">
+                and u_id=#{uid}
+            </when>
+            <when test="tid != null">
+                and id=#{tid}
+            </when>
+        </choose>
+    </select>
+
+    <select id="getMydbElement" parameterType="java.util.Map" resultType="com.graduation.model.MydbElement">
+		select id,tableName,rowNum,u_id as uid from mydb_user
+		where tableName=#{tableName}
+	</select>
+
+    <update id="deleteTableByNames" parameterType="java.util.Map">
+        drop table if exists
+        <foreach collection="tableNames" index="index" item="item" separator=",">
+            ${item}
+        </foreach>
+    </update>
+
+    <delete id="deleteMydbElementByTableName" parameterType="java.util.Map">
+        delete from mydb_user
+        where tableName in
+        <foreach item="item" index="index" collection="tableNames"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="selectList" parameterType="java.util.Map" resultType="MydbElement">
+		select id,tableName,rowNum,u_id as uid from mydb_user
+	</select>
+
+    <select id="findTabelDataCount" parameterType="java.util.Map" resultType="long">
+		select count(*) from ${tableName}
+	</select>
+
+    <select id="findTabelData" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+		select * from ${tableName}
+	</select>
+
+    <select id="getMydbElementByUId" parameterType="java.util.Map" resultType="MydbElement">
+        select id,tableName,rowNum,u_id as uid from mydb_user where 1=1
+        <if test="uid != null">
+            and u_id=#{uid}
+        </if>
+    </select>
+    <select id="getTableNameKeword" parameterType="java.util.Map" resultType="string">
+        <bind name="keyword" value="'%' + keyword + '%'" />
+        select tableName from mydb_user
+        where u_id = #{uid}
+        <if test="keyword != null">
+            and tableName like #{keyword}
+        </if>
+
+    </select>
+</mapper>
+
