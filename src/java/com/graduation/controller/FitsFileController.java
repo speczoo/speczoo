@@ -1,15 +1,14 @@
 package com.graduation.controller;
 
 import com.graduation.common.SystemContext;
+import java.io.File;
+import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/fits")
@@ -22,7 +21,7 @@ public class FitsFileController {
 
     @RequestMapping(value = "/{path}", method = RequestMethod.GET)
     public void download(@PathVariable("path") String Name, HttpServletResponse response) {
-        String FitsPath = SystemContext.getRealPath() + "\\" + Name + ".fits";
+        String FitsPath = SystemContext.getRealPath() + "/" + Name + ".fits";
 
 
         File file = new File(FitsPath);
