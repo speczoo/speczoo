@@ -206,7 +206,7 @@ img {
 #adbox {
   background: #020a13 url(../images2/bg-adbox.jpg) no-repeat center top;
   font-family: Georgia, "Times New Roman", Times, serif;
-  min-height: 433px;
+  min-height: 180px;
   margin: -56px 0 22px;
   /** Needed for IE7 **/
   *margin: 0;
@@ -218,7 +218,7 @@ img {
   padding: 54px 10px 26px;
 }
 #adbox .info {
-  height: 354px;
+  height: 180px;
   width: 330px;
   overflow: hidden;
 }
@@ -447,7 +447,7 @@ img {
   color: #060606;
   font: 18px/24px Arial, Helvetica, sans-serif;
   height: 100px;
-  width: 600px;
+  width: 800px;
   border: 0;
   margin: 0 10px 0 0;
   padding-left: 10px;
@@ -643,4 +643,10 @@ img {
   color: #03436f;
   width: 460px;
   margin-right: 10px;
+}
+#mydbInfo a{
+  color: #fcc43d;
+}
+#tableDataDiv a{
+  color: #fcc43d;
 }

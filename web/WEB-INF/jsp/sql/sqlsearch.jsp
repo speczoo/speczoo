@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <jsp:include page="/jsp/layout/header-login.jsp"/>
+    <jsp:include page="/jsp/layout/header.jsp"/>
     <div id="contents">
       <div id="search-service-div" class="wrapper clearfix">
         <div class="main">
@@ -93,6 +93,6 @@
         </div>
       </div>
     </div>
-    <jsp:include page="/jsp/layout/footer.jsp"/>   
+    <jsp:include page="/jsp/layout/footer-login.jsp"/>   
   </body>
 </html>

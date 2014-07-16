@@ -9,31 +9,31 @@
 <div id="footer">
   <ul id="featured" class="wrapper clearfix">
     <li>
-      <img src="resources/images2/c1.jpg" alt="Img" height="204" width="220">
-      <h3><a href="blog.html">Category 1</a></h3>
+      <img src="resources/images2/qsos.gif" alt="Img" height="204" width="220">
+      <h3><a href="#">QSOs</a></h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec mi tortor. Phasellus commodo semper vehicula.
+      Every parcel of gas along the line of sight to a distant quasar will selectively absorb certain wavelengths of continuum light of the quasar due to the presence of the various chemical elements in the gas.   
       </p>
     </li>
     <li>
-      <img src="resources/images2/c2.jpg" alt="Img" height="204" width="220">
-      <h3><a href="blog.html">Category 2</a></h3>
+      <img src="resources/images2/galaxies.png" alt="Img" height="204" width="220">
+      <h3><a href="#">GALAXIES</a></h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec mi tortor. Phasellus commodo semper vehicula.
+      Galaxies are some of the most beautiful and intriguing objects in the night sky. They are also the leviathans of the Universe, spanning tens to hundreds of thousands of light years in size. Yet we know little about how they formed and developed over cosmic time into the objects we see today.   
       </p>
     </li>
     <li>
-      <img src="resources/images2/c3.jpg" alt="Img" height="204" width="220">
-      <h3><a href="blog.html">Category 3</a></h3>
+      <img src="resources/images2/stars.jpg" alt="Img" height="204" width="220">
+      <h3><a href="#">STARS</a></h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec mi tortor. Phasellus commodo semper vehicula.
+        In astronomy, stellar classification is the classification of stars based on their spectral characteristics. Light from the star is analyzed by splitting it with a prism or diffraction grating into a spectrum exhibiting the rainbow of colours interspersed with absorption lines. 
       </p>
     </li>
     <li>
-      <img src="resources/images2/c4.jpg" alt="Img" height="204" width="220">
-      <h3><a href="blog.html">Category 4</a></h3>
+      <img src="resources/images2/datamining.png" alt="Img" height="204" width="220">
+      <h3><a href="#">DATA MINING</a></h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec mi tortor. Phasellus commodo semper vehicula.
+        Data mining is the computational process of discovering patterns in large data sets involving methods at the intersection of artificial intelligence, machine learning, statistics, and database systems.
       </p>
     </li>
   </ul>
@@ -44,27 +44,27 @@
           <h4>Social</h4>
           <ul>
             <li>
-              <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank">Google +</a>
+              <a href="#" target="_blank">Google +</a>
             </li>
             <li>
-              <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank">Facebook</a>
+              <a href="#" target="_blank">Facebook</a>
             </li>
             <li>
-              <a href="http://freewebsitetemplates.com/go/youtube/" target="_blank">Youtube</a>
+              <a href="#" target="_blank">Sina WeiBo</a>
             </li>
           </ul>
         </div>
         <div>
-          <h4>Heading placeholder</h4>
+          <h4>Others</h4>
           <ul>
             <li>
-              <a href="index.html">Link Title 1</a>
+              <a href="index.html">Tools</a>
             </li>
             <li>
-              <a href="index.html">Link Title 2</a>
+              <a href="index.html">Learning</a>
             </li>
             <li>
-              <a href="index.html">Link Title 3</a>
+              <a href="index.html">About</a>
             </li>
           </ul>
         </div>
@@ -74,13 +74,13 @@
         <p>
           Sign up for Our Newsletter
         </p>
-        <form action="index.html" method="post">
+        <form action="#" method="post">
           <input type="text" value="">
           <input type="submit" value="Sign Up!">
         </form>
       </div>
       <p class="footnote">
-        © Copyright © 2023.Company name all rights reserved
+        © Copyright © 2023. all rights reserved
       </p>
     </div>
   </div>

@@ -13,7 +13,7 @@
   <head>
     <base href="<%=basePath%>">
 
-    <title>My JSP 'show.jsp' starting page</title>
+    <title>Expert platform - Query</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="pragma" content="no-cache">
@@ -29,14 +29,14 @@
   </head>
 
   <body>
-    <jsp:include page="/jsp/layout/header-login.jsp"/>
+    <jsp:include page="/jsp/layout/header.jsp"/>
     <div id="contents">
       <div id="search-service-div" class="wrapper clearfix">
         <div class="main">
-          <h2>自定义查询</h2>
+          <h2>Query Constructed</h2>
           <div id="t_tableInfoDiv">
             <select name="tableName">
-              <option>请选择表</option>
+              <option>Optional Tables</option>
             </select>
           </div>
           <div id="showDiv">
@@ -46,7 +46,7 @@
                   <option value="1">and</option>
                   <option value="0">or</option>
                 </select>
-                <input type="button" value="增加条件" id="addCondition"/>
+                <input type="button" value="Add" id="addCondition"/>
                 <input type="button" value="submit" id="sb"/>
                 <input type="button" value="reset" id="reset"/>
               </div>

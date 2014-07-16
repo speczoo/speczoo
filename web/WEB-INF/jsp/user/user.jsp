@@ -50,7 +50,7 @@
   </head>
 
   <body>
-    <jsp:include page="/jsp/layout/header-login.jsp"/>
+    <jsp:include page="/jsp/layout/header.jsp"/>
     <div id="contents">
       <div id="search-service-div" class="wrapper clearfix">
         <div id="leftbar_list">

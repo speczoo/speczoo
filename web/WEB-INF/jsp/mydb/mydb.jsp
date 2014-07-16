@@ -21,8 +21,8 @@
     
 <!--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/mydb.css">
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/js/uploadify/uploadify.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/js/jqueryUi/css/jquery-ui.css">-->
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/js/uploadify/uploadify.css">-->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/js/jqueryUi/css/jquery-ui.css">
     <link rel="stylesheet" href="<%= request.getContextPath()%>/resources/css/style.css" type="text/css">
     <%--<script type="text/javascript" src="<%= request.getContextPath() %>/resources/js/jquery-1.8.3.js"></script>--%>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jqueryUi/js/jquery-1.10.2.js"></script>
@@ -138,7 +138,7 @@
   </head>
 
   <body>
-    <jsp:include page="/jsp/layout/header-login.jsp"/>
+    <jsp:include page="/jsp/layout/header.jsp"/>
     <div id="contents">
       <div class="wrapper clearfix">
         <div id="leftbar">
@@ -166,7 +166,7 @@
               <tfoot>
                 <tr>
                   <td colspan="3" align="right">
-                    <a href="mydb/clearAllTable" style="color: #fcc43d;">Delete all data</a>
+                    <a href="mydb/clearAllTable" >Delete all data</a>
                   </td>
                 <tr>
               </tfoot>

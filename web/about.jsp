@@ -6,7 +6,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>About - Astronomy Website Template</title>
+    <title>About - Data-mining Based Expert Platform for the Spectral Inspection</title>
     <link rel="stylesheet" href="resources/css/style.css" type="text/css">
   </head>
   <body>
@@ -26,7 +26,7 @@
             <b>Be Part of Our Community</b> If you're experiencing issues and concerns about this website template, join the discussion <a href="http://www.freewebsitetemplates.com/forums/">on our forum</a> and meet other people in the community who share the same interests with you.
           </p>
           <p>
-            <b>Template details</b> Design version 3<br> Code version 2<br> Website Template details, discussion and updates for this <a href="http://www.freewebsitetemplates.com/discuss/astronomywebsitetemplate/">Astronomy Website Template</a>.<br> Website Template design by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a>.<br><br> Please feel free to remove some or all the text and links of this page and replace it with your own About content.
+            <b>Template details</b> Design version 3<br> Code version 2<br> Website Template details, discussion and updates for this <a href="http://www.freewebsitetemplates.com/discuss/astronomywebsitetemplate/">Data-mining Based Expert Platform for the Spectral Inspection</a>.<br> Website Template design by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a>.<br><br> Please feel free to remove some or all the text and links of this page and replace it with your own About content.
           </p>
         </div>
       </div>

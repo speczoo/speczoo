@@ -15,27 +15,27 @@
           <h4>Social</h4>
           <ul>
             <li>
-              <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank">Google +</a>
+              <a href="#" target="_blank">Google +</a>
             </li>
             <li>
-              <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank">Facebook</a>
+              <a href="#" target="_blank">Facebook</a>
             </li>
             <li>
-              <a href="http://freewebsitetemplates.com/go/youtube/" target="_blank">Youtube</a>
+              <a href="#" target="_blank">Sina WeiBo</a>
             </li>
           </ul>
         </div>
         <div>
-          <h4>Heading placeholder</h4>
+          <h4>Others</h4>
           <ul>
             <li>
-              <a href="index.html">Link Title 1</a>
+              <a href="index.html">Tools</a>
             </li>
             <li>
-              <a href="index.html">Link Title 2</a>
+              <a href="index.html">Learning</a>
             </li>
             <li>
-              <a href="index.html">Link Title 3</a>
+              <a href="index.html">About</a>
             </li>
           </ul>
         </div>
@@ -45,7 +45,7 @@
         <p>
           Sign up for Our Newsletter
         </p>
-        <form action="index.html" method="post">
+        <form action="#" method="post">
           <input type="text" value="">
           <input type="submit" value="Sign Up!">
         </form>

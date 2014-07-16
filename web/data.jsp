@@ -6,7 +6,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>About - Astronomy Website Template</title>
+    <title>About - Data-mining Based Expert Platform for the Spectral Inspection</title>
     <link rel="stylesheet" href="resources/css/style.css" type="text/css">
   </head>
   <body>

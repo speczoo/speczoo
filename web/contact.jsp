@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Contact - Astronomy Website Template</title>
+    <title>Contact - Data-mining Based Expert Platform for the Spectral Inspection</title>
     <link rel="stylesheet" href="resources/css/style.css" type="text/css">
   </head>
   <body>

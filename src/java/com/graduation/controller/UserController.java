@@ -11,20 +11,19 @@ import com.graduation.service.IRoleService;
 import com.graduation.service.IUserService;
 import com.graduation.util.ResponseUtil;
 import com.graduation.web.SessionContext;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import javax.imageio.ImageIO;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user")
@@ -79,7 +78,8 @@ public class UserController {
         session.removeAttribute("checkCode");
         SessionContext.addSessoin(session);
         model.addAttribute("loginUser", user);
-        return "redirect:/home";
+        //"redirect:/home"
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/getCheckCode", method = RequestMethod.GET)
@@ -113,7 +113,7 @@ public class UserController {
     public String logout(HttpSession session) {
         session.removeAttribute("loginUser");
         session.invalidate();
-        return "redirect:login";
+        return "redirect:/";
     }
 
     @RequestMapping("/users")

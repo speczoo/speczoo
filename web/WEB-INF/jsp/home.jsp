@@ -10,7 +10,7 @@
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>Home</title>
+    <title>My Home</title>
     <meta charset="UTF-8">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">

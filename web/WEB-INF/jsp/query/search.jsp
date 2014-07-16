@@ -53,7 +53,7 @@
 
   <body>
 
-    <jsp:include page="/jsp/layout/header-login.jsp"/>
+    <jsp:include page="/jsp/layout/header.jsp"/>
     <div id="contents">
       <div id="search-service-div" class="wrapper clearfix">
         <div class="main">
@@ -66,7 +66,7 @@
                   <td><label for="tags"><b>TableName:</b></label></td>
                   <td colspan="5" align="left">
                     <input id="tags" type="text" name="tableName" value="${tableName}" style="heitht: 24px; width: 200px; font-size: 18px;"/>
-                    <a href="query/query">Advanced query>></a>
+<!--                    <a href="query/query">Advanced query>></a>-->
                   </td>
                 </tr>
                 <tr>
