@@ -96,7 +96,7 @@ function createOption(value,text){
 /*--------------------创建FieldSelect---------------------*/
 function createFieldSelect(selectName){
     var fieldSelect ="<select name='"+selectName+"'>";
-    fieldSelect = fieldSelect.concat(createOption("","可利用字段"));
+    fieldSelect = fieldSelect.concat(createOption("","Field"));
     for(var i=0;i<filedNames.length;i++){
         fieldSelect = fieldSelect.concat(createOption(filedNames[i],filedNames[i]));
     }

@@ -71,7 +71,7 @@
     <div id="sqlInputDiv">
         <div id="t_tableInfoDiv">
             <select name="tableName">
-                <option>可查询表</option>
+                <option>Optional Tables</option>
             </select>
         </div>
         <form action="sql/sqlsearch" method="post">
