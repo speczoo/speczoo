@@ -1,6 +1,8 @@
 package com.graduation.controller;
 
 import com.graduation.common.Pager;
+import com.graduation.model.AuthorityMethod;
+import com.graduation.model.AuthorityType;
 import com.graduation.service.ISqlQueryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +26,13 @@ public class SqlQueryController {
     @Inject
     private ISqlQueryService sqlQueryService;
 
+    @AuthorityMethod(authorityTypes = AuthorityType.SQL_QUERY)
     @RequestMapping(value = "/sqlsearch",method = RequestMethod.GET)
     public String toSqlpage(){
         return "sql/sqlsearch";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.SQL_QUERY)
     @RequestMapping(value = "/sqlsearch",method = RequestMethod.POST)
     public String showData(@RequestParam("sql") String sql,Model model){
         ArrayList<String> error = new ArrayList<String>();
@@ -57,6 +61,4 @@ public class SqlQueryController {
         model.addAttribute("total",pager.getTotal());
         return "sql/sqlsearch";
     }
-
-
 }

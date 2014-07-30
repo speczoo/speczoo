@@ -8,7 +8,7 @@
           items="${param.totalRecord }"
           maxPageItems="<%=SystemContext.getPageSize() %>"
           url="${param.url }">
-    <span style="float:right;padding:6px; ">
+    <span style="float:right;padding:6px;">
     In All
     <pg:last>
         ${pageNumber } Page[${param.totalRecord } Records], Each page show <%=SystemContext.getPageSize() %> records,

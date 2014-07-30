@@ -1,12 +1,12 @@
 package com.graduation.test;
 
-import com.graduation.service.IUserService;
-import org.junit.Before;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.graduation.service.IUserService;
 
 /**
  * Created with IntelliJ IDEA.

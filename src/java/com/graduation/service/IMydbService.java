@@ -68,14 +68,19 @@ public interface IMydbService {
 
     public List<Map<String, Object>> listTableData(String tableName);
 
-
     /**
      * 获取指定表的字段名字（表元数据）
      * @param tabelName
      * @return
      */
     public List<String> getFieldNamesOfTable(String tabelName) throws SQLException;
-
-
+    
+    public MydbElement getMydbElementByUidAndTableName(Integer uid,String tableName);
+    
+    /**
+     * 修改表是私有和共有的状态
+     * @param mydbElement
+     */
+    public void updateTableStatus(MydbElement mydbElement);
 
 }

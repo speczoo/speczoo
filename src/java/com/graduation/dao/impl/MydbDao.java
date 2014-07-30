@@ -1,6 +1,10 @@
 package com.graduation.dao.impl;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +41,7 @@ public class MydbDao extends BaseDao<MydbElement> implements IMydbDao {
 
     @Override
     public int insertMydbElement(MydbElement mydb) {
+    	mydb.setUpdateDate(new java.sql.Date(new java.util.Date().getTime()));
         return this.getSqlSessionTemplate().insert(this.getClz().getName() + ".insertMydb", mydb);
     }
 
@@ -110,6 +115,7 @@ public class MydbDao extends BaseDao<MydbElement> implements IMydbDao {
     public List<MydbElement> getMydbElement(Integer uid) {
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("uid", uid);
+        parameters.put("isPublic",1);
         return this.getSqlSessionTemplate().selectList(this.getClz().getName() + ".getMydbElementByUId", parameters);
     }
 
@@ -118,6 +124,7 @@ public class MydbDao extends BaseDao<MydbElement> implements IMydbDao {
        Map<String,Object> parameters = new HashMap<String, Object>();
         parameters.put("uid",uid);
         parameters.put("keyword",keyword);
+        parameters.put("isPublic",1);
         return this.getSqlSessionTemplate().selectList(this.getClz().getName()+".getTableNameKeword",parameters);
     }
 
@@ -130,4 +137,30 @@ public class MydbDao extends BaseDao<MydbElement> implements IMydbDao {
         ResultSet rs = state.executeQuery("select * from "+tableName+" where  1=2");
         return ResultSetHandleUtil.getFieldNamesByResultSet(rs);
     }
+
+	@Override
+	public MydbElement getMydbElementByUidAndTableName(Integer uid,
+			String tableName) {
+		Map<String,Object> parameters = new HashMap<String,Object>();
+		parameters.put("uid",uid);
+		parameters.put("tableName",tableName);
+		
+		return this.getSqlSessionTemplate().selectOne(this.getClz().getName() + ".getMydbElementByUidAndTableName", parameters);
+		
+
+	}
+
+	@Override
+	public void updateTableStatus(MydbElement mydbElement) {
+		if(mydbElement.getIsPublic() == 1) {
+			mydbElement.setIsPublic(0);
+		}else{
+			mydbElement.setIsPublic(1);
+		}
+		
+		this.getSqlSessionTemplate().update(this.getClz().getName() + ".updateTableStatus", mydbElement);
+	}
+	
+	
+    
 }

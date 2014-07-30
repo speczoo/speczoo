@@ -262,7 +262,7 @@ img {
 }
 #leftbar{  
   float: left;
-  width: 350px;
+  width: 300px;
   height: 80%;
   margin: 0 10px 0 10px;
   color: #fdfcfc;
@@ -513,7 +513,7 @@ img {
 #leftbar input[type='button'] {
   cursor: pointer;
   border: 0;
-  width: 100px;
+  width: 90px;
 }
 #contact div.checkbox label {
   cursor: pointer;

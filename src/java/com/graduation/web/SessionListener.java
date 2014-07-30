@@ -12,7 +12,7 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionDestroyed(HttpSessionEvent event) {
         SessionContext.removeSession(event.getSession());
-        //System.out.println("移除了Session:" + event.getSession().getId());
+        System.out.println("移除了Session:" + event.getSession().getId());
     }
 
 }

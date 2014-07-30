@@ -22,13 +22,9 @@
 </head>
 
 <body>
-<div>
-    <p>
-
-    <h3> The resource you required is invalid!^_^</h3>
-    <h4><a href="home">Back</a></h4>
-
-    </p>
+<div style="text-align: center;margin-top: 100px;margin-bottom: 350px;">
+    <h3>Sorry, you don't have the permission to access the page,<br/>
+        or the resource you required is invalid!  ^_^</h3>
 </div>
 
 </body>

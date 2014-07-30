@@ -59,6 +59,12 @@
         where id = #{id}
     </update>
 
+    <update id="updateUserAuthorityById" parameterType="java.util.Map">
+        update t_user
+        set authority = #{authority}
+        where id = #{id}
+    </update>
+
     <insert id="insert" parameterType="com.graduation.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into t_user(username,password,nickname,email,phone,status,company)
         values (#{username},#{password},#{nickname}, #{email},#{phone},#{status},#{company})

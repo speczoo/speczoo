@@ -71,6 +71,16 @@ public class ResultSetHandleUtil {
         Collections.sort(ls,new Comparator<Map<String, Object>>() {
             @Override
             public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+            	Object obj1 = o1.get("RECORD_ID");
+            	Object obj2 = o2.get("RECORD_ID");
+            	
+            	if((obj1 instanceof java.lang.Long) && (obj2 instanceof java.lang.Long)){
+            		Long l1 = (Long)obj1;
+            		Long l2 = (Long)obj2;
+            		return (int)(l1-l2);
+            	}
+            	
+            	
                 String s1 = (String)o1.get("RECORD_ID");
                 String s2 = (String)o2.get("RECORD_ID");
                 Long n1 = Long.parseLong(s1);
@@ -135,4 +145,3 @@ public class ResultSetHandleUtil {
     }
 
 }
-

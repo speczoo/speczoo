@@ -1,5 +1,8 @@
 package com.graduation.controller;
 
+import com.graduation.model.AuthorityMethod;
+import com.graduation.model.AuthorityType;
+import com.graduation.model.ResultType;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +18,14 @@ import java.io.IOException;
 @RequestMapping("/file")
 public class FileController {
 
-
+    @AuthorityMethod(authorityTypes = AuthorityType.FILE_UPLOAD)
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String upload() {
         return "updownload/upload";
 
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.FILE_UPLOAD)
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String upload(MultipartFile file, HttpServletRequest request, Model model) {
         try {
@@ -38,8 +42,5 @@ public class FileController {
             e.printStackTrace();
         }
         return "updownload/upload";
-
     }
-
-
 }

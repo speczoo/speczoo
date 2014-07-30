@@ -1,14 +1,20 @@
 package com.graduation.util;
 
-import com.graduation.model.SearchParam;
-import org.junit.Test;
-
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.Test;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.graduation.common.SystemContext;
+import com.graduation.model.SearchParam;
 
 public class ParameterHandleUtil {
 
@@ -107,7 +113,7 @@ public class ParameterHandleUtil {
             return false;
         }
     }
-    
+
     public static boolean isInteger(String str){
         try {
             Integer.parseInt(str);
@@ -117,13 +123,12 @@ public class ParameterHandleUtil {
         }
     }
 
-
-    @Test
-    public void test01() {
-        System.out.println(Double.parseDouble("1.80200000000E-05"));
-        System.out.println(ParameterHandleUtil.isNumber("1.80200000000E-05"));
-    }
-
+    /**
+     * 根据页面差数动态生成Sql语句  （此函数是针对动态查询页面）
+     * @param tableName
+     * @param request
+     * @return
+     */
     public static String gernerateSql(String tableName,HttpServletRequest request){
         StringBuilder sql = new StringBuilder();
         sql.append("select * from");
@@ -163,6 +168,47 @@ public class ParameterHandleUtil {
         Integer pageOffset = (pagenumber-1)*pageSize;
         sql.append(" "+"limit "+" "+pageOffset+", "+pageSize);*/
         return sql.toString();
+    }
+
+    
+    /**
+     * 将文件保存在fits/username/tablenane下
+     * @param file
+     * @param username
+     * @param tableName
+     * @param error
+     */
+    public static void saveUploadFile(MultipartFile file,String username,String tableName,List<String> error){
+    	try
+		{
+			String realPath = SystemContext.getRealPath()+"/"+username+"/"+TableHandleUtil.getRealTableName(tableName);
+			File zipPath = new File(realPath+"/zip");
+			String clientFileName = file.getOriginalFilename();
+			
+			String fileSuffix = clientFileName.substring(clientFileName.lastIndexOf(".")+1);
+			File dest = new File(realPath);
+			if(!dest.exists()){
+				dest.mkdirs();
+			}
+			if(! zipPath.exists()){
+				zipPath.mkdirs();
+			}
+			File destFile = new File(dest,tableName+"."+fileSuffix);
+			FileUtils.copyInputStreamToFile(file.getInputStream(),destFile);
+			ZipUtil.ZipCompress(destFile,new File(zipPath,tableName+".zip"));
+		} catch (IOException e)
+		{
+			System.out.println("文件保存失败......");
+			error.add("文件保存失败......");
+			e.printStackTrace();
+		}
+    	
+    }
+
+    @Test
+    public void test01() {
+        System.out.println(Double.parseDouble("1.80200000000E-05"));
+        System.out.println(ParameterHandleUtil.isNumber("1.80200000000E-05"));
     }
 
 }

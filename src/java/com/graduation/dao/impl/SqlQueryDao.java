@@ -24,23 +24,21 @@ public class SqlQueryDao extends BaseDao implements ISqlQueryDao {
         Pager<Map<String,Object>> pager = new Pager<Map<String, Object>>();
         //查询总记录数
         long total = 0;
-        //对Sql完成分页的包装
-        Integer pageSize = SystemContext.getPageSize();
-        Integer pageOffset = SystemContext.getPageOffset();
-        String pagerSql=sql+" "+"limit "+" "+pageOffset+", "+pageSize;
+
         Connection con = this.getSqlSessionTemplate().getConnection();
         Statement statement = con.createStatement();
         //判断是否是修改语句
         ResultSet rs = null;
-        boolean isSqlUpdate = TableHandleUtil.isSqlUpdate(pagerSql);
+        boolean isSqlUpdate = TableHandleUtil.isSqlUpdate(sql);
         if (isSqlUpdate){
-            statement.executeUpdate(pagerSql);
+            //如果要求支持sql的更新，取消下面注释
+           // statement.executeUpdate(sql);
         }else {
             String countSql = TableHandleUtil.getSqlQueryCount(sql);
             ResultSet rsCount = statement.executeQuery(countSql);
             total = ResultSetHandleUtil.getCountByResultSet(rsCount);
             statement.clearBatch();
-            rs = statement.executeQuery(pagerSql);
+            rs = statement.executeQuery(sql);
         }
         List<Map<String, Object>> lmps = null;/*new ArrayList<Map<String,Object>>()*/
         if(rs != null){
@@ -48,7 +46,7 @@ public class SqlQueryDao extends BaseDao implements ISqlQueryDao {
         }
 
         pager.setDatas(lmps);
-        pager.setOffset(pageOffset);
+      //  pager.setOffset(0);
         pager.setTotal(total);
         return pager;
 

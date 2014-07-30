@@ -1,5 +1,7 @@
 package com.graduation.controller;
 
+import com.graduation.model.AuthorityMethod;
+import com.graduation.model.AuthorityType;
 import com.graduation.model.Role;
 import com.graduation.model.dto.RoleDto;
 import com.graduation.service.IRoleService;
@@ -23,6 +25,7 @@ public class RoleController {
     @Inject
     private IRoleService roleService;
 
+    @AuthorityMethod(authorityTypes = AuthorityType.ROLE_LIST)
     @RequestMapping("/roles")
     public String toRoles(Model model) {
         List<Role> roles = this.roleService.list();
@@ -30,6 +33,7 @@ public class RoleController {
         return "role/role";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.ROLE_CREATE)
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Model model) {
         RoleDto roleDto = new RoleDto();
@@ -37,6 +41,7 @@ public class RoleController {
         return "role/create";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.ROLE_CREATE)
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(RoleDto roleDto, HttpServletRequest request, Model model) {
         if (roleDto != null) {
@@ -61,6 +66,7 @@ public class RoleController {
         return "redirect:/role/roles";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.ROLE_UPDATE)
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(@PathVariable("id") Integer id, Model model) {
         if (id != null) {
@@ -72,6 +78,7 @@ public class RoleController {
         return "role/update";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.ROLE_UPDATE)
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateRole(RoleDto roleDto, HttpServletRequest request, Model model) {
         if (roleDto != null) {
@@ -96,6 +103,7 @@ public class RoleController {
         return "redirect:roles";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.ROLE_DELETE)
     @RequestMapping("/delete")
     @ResponseBody
     public String deleteRole(HttpServletResponse response, Integer id) {

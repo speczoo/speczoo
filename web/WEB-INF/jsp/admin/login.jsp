@@ -9,7 +9,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>SpecZoo Login</title>
+    <title>Login</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -35,10 +35,10 @@
 
                     success: function (msg) {
                         if (msg == "right") {
-                            $('#imgResult').attr("src", "resources/image/right.jpg");
+                            $('#imgResult').attr("src", "resources/image/right.png");
                             $('#imgResult').show();
                         } else if (msg == "error") {
-                            $('#imgResult').attr("src", "resources/image/error.jpg");
+                            $('#imgResult').attr("src", "resources/image/error.png");
                             $('#imgResult').show();
                         } else {
                             $('#imgResult').hide();
@@ -86,7 +86,6 @@
                 </td>
             </tr>
             <tr>
-            <!-- 
                 <td>Check Code</td>
                 <td>
                     <input type="text" name="checkCode" size="12" onkeyup="checkCheckCode()" maxlength="4"/>
@@ -94,10 +93,9 @@
                 <td>
                     <img alt="Waiting" src="user/getCheckCode" onclick="this.src = this.src + '?id = ' + Math.random()"
                          style="width: 80px; height: 25px;margin-left: -115px;cursor:pointer;"/>
-                    <img style="display:none; width:15px;" id="imgResult" src=""/>
+                    <img style="display:none; width:15px;height: 15px;" id="imgResult" src=""/>
                 </td>
             </tr>
-            -->
             <tr align="right">
                 <td colspan="2" style="text-align: center;">
                     <input style="width: 57px; height: 24px;" type="submit" value="Login"
@@ -105,7 +103,6 @@
                     <input style="width: 57px; height: 24px; margin-left: 30px;" type="reset" value="Reset"/>
                 </td>
             </tr>
-             
             <tr>
                 <td colspan="2"><span class="error">${error}</span></td>
             </tr>

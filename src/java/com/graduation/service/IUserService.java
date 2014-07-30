@@ -31,4 +31,6 @@ public interface IUserService {
     public int updateUserInfo(User user);
 
     public int updatePasswordById(int id, String newPsw);
+
+    public int updateUserAuthorityById(int userId, String authority);
 }

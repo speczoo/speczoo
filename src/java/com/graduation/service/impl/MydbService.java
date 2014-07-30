@@ -1,12 +1,5 @@
 package com.graduation.service.impl;
 
-import com.graduation.common.Pager;
-import com.graduation.dao.IMydbDao;
-import com.graduation.model.MydbElement;
-import com.graduation.service.IMydbService;
-import com.graduation.util.TableHandleUtil;
-import org.apache.commons.io.IOUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import com.graduation.common.Pager;
+import com.graduation.dao.IMydbDao;
+import com.graduation.model.MydbElement;
+import com.graduation.service.IMydbService;
+import com.graduation.util.TableHandleUtil;
 
 public class MydbService implements IMydbService {
 
@@ -30,6 +29,7 @@ public class MydbService implements IMydbService {
     public long insertBach(InputStream fileIn, String tableName, List<String> error) throws IOException {
 
         int insertRowNumber = 0;//插入表格总行数
+        boolean hasRecordId = false;
         try {
             BufferedReader fileReader = new BufferedReader(new InputStreamReader(fileIn));
             ArrayList<String> sqls = new ArrayList<String>();//存入要插入的字段值
@@ -42,14 +42,13 @@ public class MydbService implements IMydbService {
                 if (1 == row) {
                     //判断该表是否有record_Id字段
                     String temLine = line.toUpperCase();
-                    if(!temLine.contains("record_Id".toUpperCase())){
-                        error.add("没有record_Id字段......");
-                        return 0;
-                    }
+                    hasRecordId = TableHandleUtil.hasRecordId(temLine);
+                    if(!hasRecordId) line = "RECORD_ID"+","+line;
                     String createTableSql = TableHandleUtil.getTableByString(tableName, line);
                     this.createTable(createTableSql, tableName);
                     fieldColumnNum = TableHandleUtil.getColumnNumberByString(line);
                 } else {
+                    if(!hasRecordId) line = (row-1)+","+line;
                     String insertValue = TableHandleUtil.getInsertValueByString(line, fieldColumnNum, row, error);
                     if (null != insertValue || !"".equals(insertValue)) {
                         sqls.add(insertValue);
@@ -94,8 +93,8 @@ public class MydbService implements IMydbService {
         if (tableNames.size() == 0) {
             return 0;
         }
-        this.mydbDao.deleteMydbElementByTableName(tableNames);
-        return this.mydbDao.deleteTableByNames(tableNames);
+         this.mydbDao.deleteTableByNames(tableNames);
+         return this.mydbDao.deleteMydbElementByTableName(tableNames);
     }
 
     public void setMydbDao(IMydbDao mydbDao) {
@@ -126,9 +125,24 @@ public class MydbService implements IMydbService {
     public List<Map<String, Object>> listTableData(String tableName) {
         return this.mydbDao.listTableData(tableName);
     }
+
     @Override
     public List<String> getFieldNamesOfTable(String tableName) throws SQLException {
         return this.mydbDao.getFieldNamesOfTable(tableName);
     }
 
+	@Override
+	public MydbElement getMydbElementByUidAndTableName(Integer uid,
+			String tableName) {
+		return this.mydbDao.getMydbElementByUidAndTableName(uid,tableName);
+	}
+
+	@Override
+	public void updateTableStatus(MydbElement mydbElement) {
+		 this.mydbDao.updateTableStatus(mydbElement);
+		
+	}
+	
+	
+    
 }

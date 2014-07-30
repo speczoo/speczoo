@@ -8,6 +8,15 @@ import java.util.regex.Pattern;
 
 public class TableHandleUtil {
     /**
+     * 判断字符串中是否有Record_id
+     * @param firstLine
+     * @return
+     */
+    public static boolean hasRecordId(String firstLine){
+        if(null == firstLine) return false;
+        return firstLine.contains("RECORD_ID");
+    }
+    /**
      * 生成创建表格的sql语句
      *
      * @param tableName
@@ -113,7 +122,11 @@ public class TableHandleUtil {
         newSql = newSql+" "+sql.substring(start);
         return newSql;
     }
-
+    
+    public static String getRealTableName(String username_tablename){
+    	return username_tablename.substring(username_tablename.lastIndexOf("_")+1);
+    }
+/*-------------------------------------Test Aera-----------------------------------------------------------*/
     @Test
     public void test01() {
         //String str = "id,name pa,nick";

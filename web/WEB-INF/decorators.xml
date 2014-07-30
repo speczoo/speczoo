@@ -5,7 +5,7 @@
     </excludes>
 
     <decorator name="default" page="default.jsp">
-        <pattern>/**</pattern>
+        <!--<pattern>/**</pattern>-->
         <!--<pattern>/file*</pattern>-->
         <!--<pattern>/fits*</pattern>-->
         <!--<pattern>/group*</pattern>-->

@@ -22,9 +22,7 @@ import com.graduation.util.ParameterHandleUtil;
 
 @Controller
 @RequestMapping("/query")
-
 public class OmlElementController {
-
 
     @Inject
     private ISpectroscopicService spectroscopicService;
@@ -39,13 +37,12 @@ public class OmlElementController {
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String nextPager( SearchParam sp, BindingResult error, Model model) {
-        this.getSearchResult(sp, model);
+    public String nextPager(SearchParam sp, BindingResult error, Model model) {
+//        this.getSearchResult(sp, model);
         return "query/search";
     }
 
     private void getSearchResult(SearchParam sp, Model model) {
-
         Map<String, Object> parameters = new HashMap<String, Object>();
         List<String> errorMsg = ParameterHandleUtil.handleParameters(sp, parameters);
         if ("0".equals(sp.getOr_and())) {
@@ -53,33 +50,33 @@ public class OmlElementController {
         } else {
             parameters.put("or_and", "1");
         }
-        if(null == sp.getTableName() || "".equals(sp.getTableName().trim())){
+        if (null == sp.getTableName() || "".equals(sp.getTableName().trim())) {
             sp.setTableName("fithas");
         }
-        parameters.put("tableName",sp.getTableName());
+        parameters.put("tableName", sp.getTableName());
 
-        if(parameters.get("tableName").equals("fithas")){
+        if (parameters.get("tableName").equals("fithas")) {
             Pager<SpectroscopicElement> ses = this.spectroscopicService.find(parameters);
             model.addAttribute("sp", sp);
             model.addAttribute("errorMsg", errorMsg);
             model.addAttribute("ses", ses);
-            model.addAttribute("tableName",sp.getTableName());
-            model.addAttribute("isFithas",true);
-        }else {
+            model.addAttribute("tableName", sp.getTableName());
+            model.addAttribute("isFithas", true);
+        } else {
             MydbElement mydb = this.mydbService.getMydbElementByTableName(parameters.get("tableName").toString());
-            if(null == mydb){
-               model.addAttribute("error","You have not create the table.....");
+            if (null == mydb) {
+                model.addAttribute("error", "You have not create the table.....");
                 return;
             }
-            Pager<Map<String,Object>> pager = this.spectroscopicService.findTableData(parameters);
+            Pager<Map<String, Object>> pager = this.spectroscopicService.findTableData(parameters);
 
             Set<String> names = pager.getDatas().get(0).keySet();
             model.addAttribute("names", names);
             model.addAttribute("pager", pager);
             model.addAttribute("sp", sp);
             model.addAttribute("errorMsg", errorMsg);
-            model.addAttribute("tableName",sp.getTableName());
-            model.addAttribute("isFithas",false);
+            model.addAttribute("tableName", sp.getTableName());
+            model.addAttribute("isFithas", false);
         }
     }
 
@@ -111,11 +108,11 @@ public class OmlElementController {
         return "query/sqlsearch";
     }*/
 
-    @RequestMapping(value="/getOwnTable")
+    @RequestMapping(value = "/getOwnTable")
     @ResponseBody
-    public List<String> getTableNameByUid(@RequestParam(value = "term",required = false,defaultValue = "f") String keyword,HttpSession session){
-        User loginUser = (User)session.getAttribute("loginUser");
-        List<String> tableNames = this.mydbService.listTableNames(loginUser.getId(),keyword);
+    public List<String> getTableNameByUid(@RequestParam(value = "term", required = false, defaultValue = "f") String keyword, HttpSession session) {
+        User loginUser = (User) session.getAttribute("loginUser");
+        List<String> tableNames = this.mydbService.listTableNames(loginUser.getId(), keyword);
         return tableNames;
     }
 

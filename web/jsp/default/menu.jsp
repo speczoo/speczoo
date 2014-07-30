@@ -19,15 +19,15 @@
                     <li><a href="user/myInfo"><span>Account</span></a></li>
                 </c:when>
             </c:choose>
-			
             <%--<li><a href="file/upload"><span>Upload file</span></a></li>--%>
-            <%--<li><a href="query/search"><span>Tools</span></a></li>--%>
-            <%--<li><a href="query/search"><span>Datasets</span></a></li>--%>
-            <%--<li><a href="query/search"><span>Projects</span></a></li>--%>
-            <%--<li><a href="query/search"><span>SpecZoo</span></a></li>--%>
-            <%--<li><a href="query/search"><span>LAMOST</span></a></li>--%>
-            <%--<li><a href="query/search"><span>Help</span></a></li>--%>
-            <%--<li><a href="query/search"><span>Contact Us</span></a></li>--%>
+
+            <%-- <li><a href="#"><span>Tools</span></a></li>
+            <li><a href="#"><span>Datasets</span></a></li>
+            <li><a href="query/search"><span>Projects</span></a></li>
+            <li><a href="#"><span>SpecZoo</span></a></li>
+            <li><a href="#"><span>LAMOST</span></a></li>
+            <li><a href="#"><span>Help</span></a></li>
+            <li><a href="#"><span>Contact Us</span></a></li> --%>
         </ul>
     </div>
 </div>

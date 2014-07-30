@@ -1,20 +1,20 @@
 package com.graduation.controller;
 
 import com.graduation.common.Pager;
-import com.graduation.model.Captcha;
-import com.graduation.model.Group;
-import com.graduation.model.Role;
-import com.graduation.model.User;
+import com.graduation.model.*;
 import com.graduation.model.dto.UserDto;
 import com.graduation.service.IGroupService;
 import com.graduation.service.IRoleService;
 import com.graduation.service.IUserService;
+import com.graduation.util.AuthorityUtil;
 import com.graduation.util.ResponseUtil;
 import com.graduation.web.SessionContext;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.Iterator;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
@@ -36,6 +36,8 @@ public class UserController {
     @Inject
     private IGroupService groupService;
 
+    // Login part ************************************************************************************
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         return "admin/login";
@@ -45,18 +47,16 @@ public class UserController {
     public String login(@RequestParam(required = true, value = "username") String username,
                         @RequestParam(required = true, value = "password") String password,
                         @RequestParam(required = false, value = "checkCode") String checkCode,
-                        HttpServletRequest request, Model model,
-                        HttpServletResponse response) throws IOException {
+                        HttpServletRequest request, Model model, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
-        
-//        Object rightCheckCode = session.getAttribute("checkCode");
-//        if (rightCheckCode == null) {
-//            model.addAttribute("error", "Session timeout, please retry!");
-//            return "admin/login";
-//        } else if (!rightCheckCode.toString().equals(checkCode)) {
-//            model.addAttribute("error", "Check code is incorrect!");
-//            return "admin/login";
-//        }
+        Object rightCheckCode = session.getAttribute("checkCode");
+        if (rightCheckCode == null) {
+            model.addAttribute("error", "Session timeout, please retry!");
+            return "admin/login";
+        } else if (!rightCheckCode.toString().equals(checkCode)) {
+            model.addAttribute("error", "Check code is incorrect!");
+            return "admin/login";
+        }
 
         username = username.trim();
         password = password.trim();
@@ -113,9 +113,13 @@ public class UserController {
     public String logout(HttpSession session) {
         session.removeAttribute("loginUser");
         session.invalidate();
-        return "redirect:/";
+        return "redirect:login";
     }
 
+
+    // Admin part ************************************************************************************
+
+    @AuthorityMethod(authorityTypes = {AuthorityType.USER_LIST})
     @RequestMapping("/users")
     public String toUsers(Model model) {
         Pager<User> pager = this.userService.findPager();
@@ -123,6 +127,7 @@ public class UserController {
         return "user/user";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.USER_CREATE)
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createUser(Model model) {
         UserDto userDto = new UserDto();
@@ -136,6 +141,7 @@ public class UserController {
         return "user/create";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.USER_CREATE)
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createUser(UserDto userDto, HttpServletRequest request, Model model) {
         if (userDto != null) {
@@ -170,6 +176,7 @@ public class UserController {
         return "redirect:users";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.USER_UPDATE, resultType = ResultType.PAGE)
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(@PathVariable("id") Integer id, Model model) {
         if (id != null) {
@@ -186,6 +193,7 @@ public class UserController {
         return "user/update";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.USER_UPDATE, resultType = ResultType.PAGE)
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(UserDto userDto, HttpServletRequest request, Model model) {
         if (userDto != null) {
@@ -220,6 +228,7 @@ public class UserController {
         return "redirect:/user/users";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.USER_DELETE, resultType = ResultType.JSON)
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     @ResponseBody
     public String delete(HttpServletResponse response, Integer id) {
@@ -238,6 +247,7 @@ public class UserController {
         return null;
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.USER_INIT_PASSWORD, resultType = ResultType.JSON)
     @RequestMapping("/initPassword")
     @ResponseBody
     public String initPs(HttpServletResponse response, Integer id) {
@@ -251,7 +261,60 @@ public class UserController {
         return null;
     }
 
-//**private part************************************************************************************
+    @AuthorityMethod(authorityTypes = AuthorityType.AUTHORITY_EDIT)
+    @RequestMapping(value = "/authority/{id}", method = RequestMethod.GET)
+    public String editAuthority(@PathVariable("id") Integer id, Model model) {
+        if (id != null) {
+            EnumSet<AuthorityType> allAuthorityTypes = EnumSet.allOf(AuthorityType.class);
+            User user = this.userService.getUserById(id);
+            List<Integer> authorityTypeIndexes = AuthorityUtil.getAuthorityTypeIndexes(user.getAuthority());
+
+            model.addAttribute("userId", id);
+            model.addAttribute("allAuthorityTypes", allAuthorityTypes);
+            model.addAttribute("authorityTypeIndexes", authorityTypeIndexes);
+        }
+
+        return "admin/authority_edit";
+    }
+
+    @AuthorityMethod(authorityTypes = AuthorityType.AUTHORITY_EDIT)
+    @RequestMapping(value = "/authority", method = RequestMethod.POST)
+    public String editAuthority(HttpServletRequest request) {
+        String tempUserId = request.getParameter("userId");
+        int userId = 0;
+
+        try {
+            userId = Integer.parseInt(tempUserId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            userId = 0;
+        }
+
+        if (userId > 0) {
+            StringBuilder authority = new StringBuilder();
+
+            EnumSet<AuthorityType> allAuthorityTypes = EnumSet.allOf(AuthorityType.class);
+            Iterator<AuthorityType> iterator = allAuthorityTypes.iterator();
+            while (iterator.hasNext()) {
+                AuthorityType authorityType = iterator.next();
+                String authorityItem = request.getParameter(authorityType.getName());
+
+                if ("1".equals(authorityItem)) {
+                    authority.append("1");
+                } else {
+                    authority.append("0");
+                }
+            }
+
+            int cnt = this.userService.updateUserAuthorityById(userId, authority.toString());
+        } else {
+            //Prompt code.
+        }
+
+        return "redirect:/user/users";
+    }
+
+// Private part ************************************************************************************
 
     @RequestMapping(value = "/myInfo", method = RequestMethod.GET)
     public String getMyInfo(Model model, HttpServletRequest request) {

@@ -9,7 +9,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>My JSP 'upload.jsp' starting page</title>
+    <title>File upload</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -59,7 +59,7 @@
 </head>
 
 <body>
-<div id="uploadDiv">
+<div id="uploadDiv" style="margin-top: 30px; margin-left: 15%;">
     <div id="file_upload_queue">
         <input type="file" id="file_upload" name="file"><br>
         <input type="button" value="Start upload" id="btupload">

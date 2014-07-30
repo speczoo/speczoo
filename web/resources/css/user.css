@@ -23,7 +23,7 @@ a {
 #showDataDiv {
     position: absolute;
     left: 200px;
-    top: 140px;
+    top: 30px;
     width: 820px;
     height: 400px;
     background-color: #E5ECFF;
@@ -36,12 +36,12 @@ a {
 }
 
 #showDataDiv table tr td {
-    border: 1px solid #E5ECFF;
+    border: 1px solid black;
     text-align: center;
 }
 
 #showDataDiv table tr th {
-    border: 1px solid #E5ECFF;
+    border: 1px solid black;
     text-align: center;
 }
 
@@ -51,7 +51,7 @@ a {
 
 #showDataDiv table tbody tr td a:link, #showDataDiv table tbody tr td a:visited {
     padding: 3px 5px;
-    border: 1px solid #E5ECFF;
+    border: 1px solid #699;
     text-decoration: none;
     color: #333;
 }

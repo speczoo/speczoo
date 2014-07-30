@@ -40,4 +40,6 @@ public interface IUserDao extends IBaseDao<User> {
     public int updateUserInfo(User user);
 
     public int updatePasswordById(int id, String newPsw);
+
+    public int updateUserAuthorityById(int userId, String authority);
 }

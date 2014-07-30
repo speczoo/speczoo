@@ -4,8 +4,8 @@
 
 }
 #sqlInputDiv textarea[name='sql']{
-    width: 400px;
-    height: auto;
+    width: 1024px;
+    height: 50px;
 }
 #SqlDataDiv{
     /*border: 1px solid blueviolet;*/
@@ -24,5 +24,7 @@ td{
     text-align: center;
     border: 1px solid #555555;
     width: auto;
+    font-size: 13px;
+    line-height: 1.231;
 
 }

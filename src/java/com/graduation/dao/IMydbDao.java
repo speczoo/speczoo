@@ -77,5 +77,14 @@ public interface IMydbDao extends IBaseDao<MydbElement> {
 
     public List<MydbElement> getMydbElement(Integer uid);
 
-	public List<String> getFieldNamesOfTable(String tableName) throws SQLException;
+    /**
+     * 获取表字段的名字
+     * @param tableName
+     * @return
+     */
+    public List<String> getFieldNamesOfTable(String tableName) throws SQLException;
+    
+    public MydbElement getMydbElementByUidAndTableName(Integer uid,String tableName);
+    
+    public void updateTableStatus(MydbElement mydbElement);
 }

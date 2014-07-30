@@ -112,5 +112,10 @@ public class UserService implements IUserService {
     public int updatePasswordById(int id, String newPsw) {
         return this.userDao.updatePasswordById(id, newPsw);
     }
+
+    @Override
+    public int updateUserAuthorityById(int userId, String authority) {
+        return this.userDao.updateUserAuthorityById(userId, authority);
+    }
 }
 

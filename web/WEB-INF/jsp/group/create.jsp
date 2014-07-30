@@ -48,7 +48,6 @@
 
 <body>
 <div id="container">
-    <jsp:include page="/jsp/SearchService/index.jsp"></jsp:include>
     <%@ include file="../operation_menu.jsp" %>
     <div id="showDataDiv">
         <h3 class="admin_link_bar">

@@ -34,9 +34,9 @@
     <jsp:include page="/jsp/default/header.jsp"/>
 </div>
 
-<%--<div class="detail-header">
-    <%@ include file="/jsp/default/menu.jsp"
-</div> --%>
+<div class="detail-header">
+    <%@ include file="/jsp/default/menu.jsp" %>
+</div>
 
 <div id="main">
     <decorator:body/>

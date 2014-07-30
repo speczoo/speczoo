@@ -1,6 +1,8 @@
 package com.graduation.controller;
 
 import com.graduation.model.AjaxObj;
+import com.graduation.model.AuthorityMethod;
+import com.graduation.model.AuthorityType;
 import com.graduation.model.Group;
 import com.graduation.model.dto.GroupDto;
 import com.graduation.service.IGroupService;
@@ -25,6 +27,7 @@ public class GroupController {
     @Inject
     private IGroupService groupService;
 
+    @AuthorityMethod(authorityTypes = AuthorityType.GROUP_LIST)
     @RequestMapping("/groups")
     public String toGroup(Model model) {
         List<Group> groups = this.groupService.list();
@@ -32,6 +35,7 @@ public class GroupController {
         return "group/group";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.GROUP_CREATE)
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Model model) {
         GroupDto groupDto = new GroupDto();
@@ -39,6 +43,7 @@ public class GroupController {
         return "group/create";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.GROUP_CREATE)
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createGroup(GroupDto groupDto, HttpServletResponse response,
                               HttpServletRequest request, Model model) throws IOException {
@@ -65,6 +70,7 @@ public class GroupController {
         return null;
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.GROUP_DELETE)
     @RequestMapping("/delete")
     @ResponseBody
     public String deleteGroup(Integer id) {
@@ -82,6 +88,7 @@ public class GroupController {
         return JsonUtil.getInstance().obj2json(ajax);
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.GROUP_UPDATE)
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(@PathVariable("id") Integer id, Model model) {
         if (id != null) {
@@ -93,6 +100,7 @@ public class GroupController {
         return "group/update";
     }
 
+    @AuthorityMethod(authorityTypes = AuthorityType.GROUP_UPDATE)
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateGroup(GroupDto groupDto, HttpServletResponse response,
                               HttpServletRequest request, Model model) throws IOException {

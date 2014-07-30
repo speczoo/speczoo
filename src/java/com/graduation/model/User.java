@@ -42,6 +42,8 @@ public class User {
 
     private String company;
 
+    private String authority;
+
     public User(int id, String username, String password, String nickname,
                 String email, String phone, int status) {
         super();
@@ -178,5 +180,13 @@ public class User {
 
     public void setGroupIds(List<Integer> groupIds) {
         this.groupIds = groupIds;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 }

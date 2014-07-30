@@ -1,7 +1,7 @@
 #t_tableInfoDiv{
    /* border: 1px solid blueviolet;*/
     height: 40px;
-    margin-right: 900px;
+    margin-left: 10px;
 }
 #showDiv div{
     float: left;
@@ -15,9 +15,9 @@
 #f_conditionDiv div{
     float: left;
    /* border-right: 5px solid #0099FF;*/
-    margin-left: 0px;
-    margin-top: 20px;
-    border: 1px solid hsla(7, 12%, 86%, 0);
+    margin-left: 10px;
+    margin-top: 3px;
+    border: 1px solid #992211;
 }
 .deleteCondition:hover{
     background: blue;

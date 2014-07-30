@@ -151,4 +151,12 @@ public class UserDao extends BaseDao<User> implements IUserDao {
         params.put("password", newPsw);
         return this.getSqlSessionTemplate().update(this.getClz().getName() + ".updatePasswordById", params);
     }
+
+    @Override
+    public int updateUserAuthorityById(int userId, String authority) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id", userId);
+        params.put("authority", authority);
+        return this.getSqlSessionTemplate().update(this.getClz().getName() + ".updateUserAuthorityById", params);
+    }
 }

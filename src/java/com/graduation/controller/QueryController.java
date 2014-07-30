@@ -7,16 +7,18 @@ import com.graduation.model.dto.Datadto;
 import com.graduation.service.IMydbService;
 import com.graduation.service.ISqlQueryService;
 import com.graduation.util.ParameterHandleUtil;
-import java.sql.SQLException;
-import java.util.*;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
+import java.util.*;
 
 @Controller
 @RequestMapping("/query")

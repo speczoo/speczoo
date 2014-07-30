@@ -6,8 +6,9 @@
 body {
     background: #F3F3F3;
 }
+
 /*----------------------------------------*/
-#top #loginUserInfo{
+#top #loginUserInfo {
     /*position: relative;
     right: 100*/
     float: right;
@@ -51,16 +52,21 @@ body {
     background: url("../image/top.jpg") no-repeat;
     width: 1024px;
     height: 110px;
-
+    margin-left: 14%;
 }
 
 #top_right {
 
 }
 
+.detail-header{
+    margin-bottom: 15px;
+}
+
 #nav_list {
     width: 1024px;
     height: auto;
+    margin-left: 14%;
 }
 
 #content #nav_list ul {
@@ -82,7 +88,7 @@ body {
     text-align: center;
     display: -moz-inline-box;
     display: inline-block;
-    width: 145px;
+    width: 110px;
 }
 
 #content #nav_list ul li span:hover {
@@ -97,10 +103,11 @@ body {
 }
 
 #search-service-div {
-  /*  background-color: #96b5fc;*/
+    /*  background-color: #96b5fc;*/
+    /* border: 1px solid red;*/
     width: 1024px;
     position: relative;
-    top: 12px;
+    top: 23px;
 }
 
 span.error {
@@ -121,7 +128,6 @@ a.pager_link:hover {
 }
 
 /*----------------------------------*/
-
 
 /*--------------------------*/
 
@@ -162,43 +168,43 @@ a.pager_link:hover {
     text-align: center;
     height: 24px;
 }
-#filedDiv table thead tr td{
+
+#filedDiv table thead tr td {
     text-align: left;
 }
 
-#submitDiv{
+#submitDiv {
     float: left;
     padding: 20px;
 }
 
-#submitDiv input{
+#submitDiv input {
     margin: 15px;
 }
 
 /****************************************************/
-#DataDiv{
+#DataDiv {
+    /*background-color: #665cb2;*/
     width: auto;
     overflow: auto;
     clear: both;
 
 }
 
-#DataDiv table{
+#DataDiv table {
     border-spacing: 0px;
     width: auto;
     height: auto;
-    background-color: ##F3F3F3;
-   
-   
+    background-color: #DBFAFF;
 }
 
 #DataDiv table tr td {
-    border: 3px solid #F3F3F3;
+    border: 1px solid black;
     text-align: center;
 
 }
 
-#DataDiv table tfoot tr td{
+#DataDiv table tfoot tr td {
     text-align: right;
 
 }
