@@ -1,4 +1,4 @@
-var tableNames = "";
+﻿var tableNames = "";
 var filedNames = "";
 var queryData = "";
 $(function(){
@@ -299,7 +299,7 @@ function addJpage(){
     });
 }
 
-/*--------test   打印条件------------------*/
+/*--------test1111111111111111111111111   打印条件------------------*/
 function print(conditions){
     for(var s in conditions){
         alert(conditions[s]);
